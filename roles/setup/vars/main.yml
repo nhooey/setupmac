@@ -5,48 +5,101 @@ general:
 
 # homebrew applications
 applications:
-  - autojump
-  - git
-  - tree
-  - httpie
+  - ag
+  - coreutils
+  - ctags
   - curl
-  - wget
+  - docker
+  - docker-compose
+  - docker-machine
+  - docker-machine-parallels
+  - dos2unix
+  - findutils
+  - gawk
+  - git
+  - gnu-getopt
+  - gnu-indent
+  - gnu-sed
+  - gnu-tar
+  - gnupg
+  - gnutls
+  - go
+  - google-java-format
+  - grep
+  - highlight
+  - htop
+  - httpie
+  - jsonpp
   - kubectl
   - kubernetes-helm
-  - zsh
-  - go
-  - vim
-  - hugo
-  - saltstack
+  - less
+  - mosh
+  - multitail
   - neovim
-  - ag 
-  - ctags
-  - terraform
+  - nmap
+  - npm                                # Node.js Package Manager
+  - nodeenv                            # Virtualenv for Node.js
+  - openssh
+  - packer
+  - postgres
+  - python3
+  - readline
+  - rsync
+  - ruby
+  - sbt
+  - scalariform
+  - tmux
+  - tree
+  - typesafe-activator
+  - uni2ascii
+  - telnet
+  - vim
+  - wakeonlan
+  - watch
+  - watchman                           # Needed for node tests or something
+  - wget
+#  - autojump
+#  - hugo
+#  - saltstack
+#  - terraform
+#  - zsh
 
 # homebrew cask applications
 cask_applications:
-  - google-chrome
-  - slack
-  - iterm2
-  - caffeine
-  - docker
-  - minikube
-  - vagrant
-  - emacs
-  - garmin-express
   - 1password
+  - adobe-acrobat-reader
   - alfred
-  - virtualbox
+  - bettertouchtool
+  - caffeine
+  - dash
+  - disk-inventory-x
+  - dropbox
+  - firefox
+  - google-chrome
+  - haptic-touch-bar                   # Provides physical feedback for Apple's Touch Bar
+  - insomnia                           # HTTP request generator
+  - intellij-idea-ce
+  - istat-menus
+  - iterm2
+  - java
+  - kitematic                          # GUI for Docker containers
+  - macvim
+  - magicprefs
+  - minikube
+  - opera
+  - parallels
+  - postico
+  - skype
+  - slack
+  - soundcleod
   - spotify
   - steam
-
-downloads:
-   zwift:
-     name: Zwift
-     url: http://cdn.zwift.com/app/ZwiftOSX.dmg
-     dest: "{{general.local_home}}/Downloads/ZwiftOSX.dmg"
-   suuntolink:
-     name: Suunto Movescount link
-     url: http://suuntolink.static.movescount.com/Suuntolink_installer.dmg
-     dest: "{{general.local_home}}/Downloads/Suuntolink_installer.dmg"
-
+  - telegram
+  - torbrowser
+  - transmission
+  - tunnelbear
+  - tunnelblick
+  - vagrant
+  - viber
+  - vlc
+  - whatsapp
