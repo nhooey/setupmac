@@ -1,8 +1,7 @@
 ---
 # install command line utilities
 
-- name: install {{item}} 
+- name: "Install Homebrew package: '{{item}}'"
   homebrew:
     name: "{{item}}"
     state: latest
-

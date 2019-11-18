@@ -1,11 +1,14 @@
-- name: application installs
+- name: Application installs
   include_tasks: apps.yml
 
-- name: configuration
+- name: Configuration
   include_tasks: configuration.yml
 
-- name: dotfiles
+- name: Dotfiles
   include_tasks: dotfiles.yml
 
-- name: links
+- name: Symlinks
   include_tasks: links.yml
+
+- name: OSX Defaults
+  include_tasks: osx_defaults.yml

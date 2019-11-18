@@ -1,23 +1,29 @@
 ---
 # make sure homebrew is installed, update brew and install applications
 
-- name: application installs
+- name: Include Homebrew package installation
   include_tasks: homebrew.yml
 
-- name: getting downloads
+- name: Download applications not in Homebrew
   get_url:
     url: "{{item.value.url}}"
     dest: "{{item.value.dest}}"
   with_dict: "{{downloads}}"
   when: downloads is defined
 
-- name: start installing homebrew applications
+- name: Tap Homebrew kegs
+  homebrew:
+    name: "{{item}}"
+    state: present
+  with_items: "{{homebrew_kegs}}"
+
+- name: Start installing Homebrew applications
   homebrew:
     name: "{{item}}"
     state: latest
   with_items: "{{applications}}"
 
-- name: start installing homebrew cask applications
+- name: Start installing Homebrew Cask applications
   homebrew_cask:
     name: "{{item}}"
     state: installed

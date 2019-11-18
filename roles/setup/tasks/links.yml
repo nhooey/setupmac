@@ -1,4 +1,5 @@
-- file:
+- name: 'Setup link: gfind'
+  file:
     src: /usr/local/Cellar/findutils/4.6.0/bin/gfind
     dest: /usr/local/bin/find
     owner: root
@@ -7,7 +8,8 @@
   become: True
   become_user: root
 
-- file:
+- name: 'Setup link: glocate'
+  file:
     src: /usr/local/Cellar/findutils/4.6.0/bin/glocate
     dest: /usr/local/bin/locate
     owner: root
@@ -16,7 +18,8 @@
   become: True
   become_user: root
 
-- file:
+- name: 'Setup link: updatedb'
+  file:
     src: /usr/local/Cellar/findutils/4.6.0/bin/gupdatedb
     dest: /usr/local/bin/updatedb
     owner: root
@@ -25,7 +28,8 @@
   become: True
   become_user: root
 
-- file:
+- name: 'Setup link: xargs'
+  file:
     src: /usr/local/Cellar/findutils/4.6.0/bin/gxargs
     dest: /usr/local/bin/xargs
     owner: root
@@ -34,7 +38,8 @@
   become: True
   become_user: root
 
-- file:
+- name: 'Setup link: gsed'
+  file:
     src: /usr/local/Cellar/gnu-sed/4.4/bin/gsed
     dest: /usr/local/bin/sed
     owner: root
