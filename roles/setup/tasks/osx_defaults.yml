@@ -1,0 +1,11 @@
+---
+
+- name: "OS X Defaults: Don't auto-connect Bluetooth audio devices"
+  osx_defaults:
+    domain: com.apple.Bluetooth.plist
+    key: DontPageAudioDevices
+    type: bool
+    value: true
+    state: present
+  become: True
+  become_user: root

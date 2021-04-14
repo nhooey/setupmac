@@ -6,153 +6,202 @@ general:
 homebrew_kegs:
   - neovim/homebrew-neovim
   - adoptopenjdk/openjdk
+  - jabley/homebrew-wrk2
+
+# Manually installed applications in the App Store or otherwise
+# - Tyme2                              # Consultant timer
+# - Gapplin                            # SVG Viewer
+# - Tailscale                          # Manages keys and encrypted tunnels for Wireguard, replacing VPNs
+# - JoystickMapper                     # Maps joystick things to keyboard keys
+# - DeDRM Tools Calibre Plugin         # Removes ePub DRM: https://github.com/apprenticeharper/DeDRM_tools
+# - Galleon Tezos wallet               # From: https://cryptonomic.tech/galleon.html
+# - Tailscale                          # From the Mac App Store
+
+# Manually configured steps:
+# http://help.beatunes.com/kb/troubleshooting/macos-how-do-i-stop-itunes-from-reacting-to-media-keys
+# launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist
+# launchctl stop com.apple.rcd
+#
+# Messages kills performance with `soagent` in Mojave, no longer exists though
+# launchctl unload -w /System/Library/LaunchAgents/com.apple.soagent.plist
 
 # homebrew applications
 applications:
-  - ag
-  - awscli
-  - bfg
-  - coreutils
-  - ammonite-repl
+  - name: ag
+  - name: awscli@1                           # Pegged at version 1 because 2 doesn't have `aws ecr`
+  - name: bash                               # Bash version at least 5
+  - name: bfg
+  - name: black                              # Standard Python indenter with opinionated determinism
+  - name: coreutils
+  - name: ammonite-repl
 # - azure-cli                          # Not used anymore
-  - bash-git-prompt
-  - cocoapods                          # For generating Xcode things, the Estimote SDK asked for it
-  - cputhrottle
-  - ctags
-  - curl
-# - docker                             # Replaced by Docker for Mac
-# - docker-compose                     # Replaced by Docker for Mac
-# - docker-machine                     # Replaced by Docker for Mac
-# - docker-machine-parallels           # Replaced by Docker for Mac
-  - dos2unix
-  - findutils
-  - gawk
-  - git
-  - gmp                                # Used for Research Exchange's `rex` repository: pycrypto
-  - gnu-getopt
-  - gnu-indent
-  - gnu-sed
-  - gnu-tar
-  - gnupg
-  - gnutls
-# - go                                 # Uses up too much space
-  - google-java-format
-  - graphviz                           # Used for Research Exchange's `rex` repository: pygraphviz
-  - grep
-  - highlight
-  - htop
-  - httpie
-  - jenv
-  - jmeter
-  - jsonpp
-  - jsonlint
-  - jq
-  - kubectl
-  - kubernetes-helm
-  - less
-  - libmemcached                       # Used for Research Exchange's `rex` repository: pylibmc
-  - libxml2                            # Used for Research Exchange's `rex` repository: xmlsec
-  - libxmlsec1                         # Used for Research Exchange's `rex` repository: xmlsec
-  - maven
-  - mill
-  - mosh
-  - multitail
-  - neovim
-  - nmap
-  - npm                                # Node.js Package Manager
-  - nodeenv                            # Virtualenv for Node.js
-  - openconnect                        # Cisco AnyConnect open-source version
-  - openssh
-  - packer
-  - postgres
-  - pstree
-  - python3
-  - rdesktop
-  - readline
-  - rsync
-  - ruby
-  - sbt
-  - scalariform
-  - sqlite
-  - teensy_loader_cli
-  - tmux
-  - tree
-  - typesafe-activator
-  - telnet
-  - terraform
-  - uni2ascii
-  - tor
-  - vim
-  - wakeonlan
-  - watch
-  - watchman                           # Needed for node tests or something
-  - wget
-  - yamllint
-#  - autojump
-#  - hugo
-#  - saltstack
-#  - zsh
+  - name: bash-git-prompt
+  - name: cocoapods                          # For generating Xcode things, the Estimote SDK asked for it
+  - name: cputhrottle
+  - name: ctags
+  - name: curl
+  - name: diffutils                          # GNU diff
+    link:
+      src: ../Cellar/diffutils/3.7/bin/diff
+      dest: /usr/local/bin/diffutils
+# - docker                                   # Replaced by Docker for Mac
+# - docker-compose                           # Replaced by Docker for Mac
+# - docker-machine                           # Replaced by Docker for Mac
+# - docker-machine-parallels                 # Replaced by Docker for Mac
+  - name: dos2unix
+  - name: findutils
+  - name: gawk
+  - name: git
+  - name: gmp                                # Used for Research Exchange's `rex` repository: pycrypto
+  - name: gnu-getopt
+  - name: gnu-indent
+  - name: gnu-sed
+  - name: gnu-tar
+  - name: gnupg
+  - name: gnutls
+# - go                                       # Uses up too much space
+  - name: google-java-format
+  - name: graphviz                           # Used for Research Exchange's `rex` repository: pygraphviz
+  - name: grep
+  - name: highlight
+  - name: htop
+  - name: httpie                             # Better than curl
+  - name: jenv
+  - name: jmeter
+  - name: jsonpp
+  - name: jsonlint
+  - name: jq
+  - name: kubectl
+  - name: kubernetes-helm
+  - name: ledger-live                        # Ledger Nano companion app
+  - name: less
+  - name: libiconv                           # Has the `iconv` binary to convert utf8 files, replacing Mac OS default
+  - name: libmemcached                       # Used for Research Exchange's `rex` repository: pylibmc
+  - name: libncurses5-dev                    # Needed for `pip install gnureadline`
+  - name: libxml2                            # Used for Research Exchange's `rex` repository: xmlsec
+  - name: libxmlsec1                         # Used for Research Exchange's `rex` repository: xmlsec
+  - name: make                               # To avoid using Xcode's `make`
+  - name: maven
+  - name: mill
+  - name: moreutils                          # Has the `isutf8` program
+  - name: mosh
+  - name: multitail
+  - name: neovim
+  - name: nmap
+  - name: npm                                # Node.js Package Manager
+  - name: nodeenv                            # Virtualenv for Node.js
+  - name: openconnect                        # Cisco AnyConnect open-source version
+  - name: openssh
+  - name: packer
+  - name: poetry                             # Python package management
+#  - name: postgres
+  - name: pstree
+  - name: pv                                 # Monitor data's progress through a pipe
+  - name: python3
+  - name: rdesktop
+  - name: readline
+  - name: rustup-init                        # Rust toolchain installer
+  - name: rsync
+  - name: ruby
+  - name: sbt
+  - name: scalariform
+  - name: sqlite
+  - name: st                                 # Statistics from the command-line
+  - name: teensy_loader_cli
+  - name: tmux
+  - name: tree
+  - name: typesafe-activator
+  - name: telnet
+  - name: terraform
+  - name: uni2ascii
+  - name: tor
+  - name: util-linux                         # Advanced getopt for Bash
+  - name: vim
+  - name: wakeonlan
+  - name: watch
+  - name: watchman                           # Needed for node tests or something
+  - name: wget
+  - name: wrk2                               # Latency and throughput benchmarking tool with percentiles
+  - name: yamllint
+#  - name: autojump
+#  - name: hugo
+#  - name: saltstack
+#  - name: zsh
 
 # homebrew cask applications
 cask_applications:
-  - 1password
-  - adobe-acrobat-reader
-  - adobe-digital-editions
-  - adoptopenjdk8                      # Java 8 JDK
-  - alfred
-  - bee
-  - bettertouchtool
-  - bluejeans                          # For Research Exchange
-  - caffeine
-  - calibre
-  - dash
-  - disk-inventory-x
-  - docker                             # Docker for Mac
-  - dropbox
-  - firefox
-  - gitter
-  - google-chrome
-  - haptic-touch-bar                   # Provides physical feedback for Apple's Touch Bar
-  - insomnia                           # HTTP request generator
-  - intellij-idea-ce
-  - istat-menus
-  - iterm2
-  - java
-  - java11
-  - jprofiler                          # Java Profiler
-  - key-codes
-  - caskroom/versions/java8
-  - kitematic                          # GUI for Docker containers
-  - macvim
-  - magicprefs
-  - minikube                           # Kubernetes for your local computer?
-  - openconnect-gui                    # Cisco AnyConnect open-source version
-#  - opera
-  - parallels
-  - postico
-  - plex-media-player
-  - plex-media-server
-  - pycharm                            # IntelliJ IDEA for Python
-  - sequel-pro
-  - skype
-  - slack
-  - soundcleod
-  - spotify
-  - stay
-  - steam
-  - tableplus                          # PostgreSQL client for Mac
-  - teensy                             # Firmware loader for Ergo Dox EZ Keybaord
-  - telegram
-  - tor-browser
-  - transmission
-  - tunnelbear
-  - tunnelblick
-  - vagrant
-  - viber
-  - virtualbox                          # The Vagrant provider
-  - visual-studio-code
-  - vlc
-  - webstorm
-  - whatsapp
-  - xquartz                             # For rdesktop
-  - zoomus
+  - name: 1clipboard                         # Clipboard manager, nice and simple
+  - name: 1password
+  - name: adobe-acrobat-reader
+  - name: adobe-digital-editions
+  - name: adoptopenjdk8                      # Java 8 JDK
+  - name: android-file-transfer              # Transfers files to Android devices
+  - name: alfred
+  - name: bee
+  - name: bettertouchtool
+  - name: brave-browser                      # Ad and tracker blocking browser
+  - name: caffeine
+  - name: calibre
+  - name: dash
+  - name: disk-inventory-x
+  - name: docker                             # Docker for Mac
+  - name: dropbox
+  - name: firefox
+  - name: flume
+  - name: gitter
+  - name: google-chrome
+  - name: google-drive-file-stream           # For keeping Google Drive files in sync on your computer
+  - name: haptic-touch-bar                   # Provides physical feedback for Apple's Touch Bar
+  - name: insomnia                           # HTTP request generator
+  - name: intellij-idea-ce
+  - name: istat-menus
+  - name: iterm2
+  - name: java
+  - name: java11
+  - name: jprofiler                          # Java Profiler
+  - name: key-codes
+  - name: caskroom/versions/java8
+  - name: kitematic                          # GUI for Docker containers
+  - name: macvim
+# - name: magicprefs                         # No longer needed: Replaced by BetterTouchTool, and doesn't work anymore anyway
+  - name: microsoft-teams                    # For Research Exchange / Liquidnet
+  - name: minikube                           # Kubernetes for your local computer?
+  - name: openconnect-gui                    # Cisco AnyConnect open-source version
+  - name: openemu                            # SNES Emulator
+#  - name: opera
+  - name: osirix-quicklook                   # Looks at medical DICOM files for x-rays and MRIs
+  - name: paragon-extfs                      # File System driver for Mac OS: ext4
+  - name: paragon-ntfs                       # File System driver for Mac OS: NTFS
+#  - name: parallels
+  - name: postico
+  - name: plex-media-player
+  - name: plex-media-server
+  - name: psequel                            # GUI for PostgreSQL
+  - name: pycharm                            # IntelliJ IDEA for Python
+  - name: ramme                              # Unofficial Instagram client built with Electron
+  - name: raspberry-pi-imager                # Writes Raspberry Pi image to MicroSD card
+  - name: sequel-pro
+  - name: skype
+  - name: slack
+  - name: snes9x                             # SNES Emulator
+  - name: soundcleod
+  - name: spotify
+  - name: stay
+  - name: steam
+  - name: tableplus                          # PostgreSQL client for Mac
+  - name: teensy                             # Firmware loader for Ergo Dox EZ Keybaord
+  - name: telegram
+  - name: tor-browser
+  - name: transmission
+  - name: tunnelbear
+  - name: tunnelblick
+#  - name: vagrant
+  - name: viber
+#  - name: virtualbox                          # The Vagrant provider
+#  - name: visual-studio-code
+  - name: vlc
+  - name: webstorm
+  - name: whatsapp
+  - name: xquartz                             # For rdesktop
+  - name: zoomus
+  - name: zsa-wally                           # Firmware loader for Ergo Dox EZ Keybaord

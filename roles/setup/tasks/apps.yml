@@ -11,20 +11,30 @@
   with_dict: "{{downloads}}"
   when: downloads is defined
 
-- name: Tap Homebrew kegs
-  homebrew:
-    name: "{{item}}"
-    state: present
-  with_items: "{{homebrew_kegs}}"
+#- name: Tap Homebrew kegs
+#  homebrew:
+#    name: "{{ homebrew_kegs }}"
+#    state: present
 
 - name: Start installing Homebrew applications
   homebrew:
-    name: "{{item}}"
+    name: "{{ item.name }}"
     state: latest
-  with_items: "{{applications}}"
+  with_items: "{{ applications }}"
 
 - name: Start installing Homebrew Cask applications
   homebrew_cask:
-    name: "{{item}}"
+    name: "{{ item.name }}"
     state: installed
-  with_items: "{{cask_applications}}"
+  with_items: "{{ cask_applications }}"
+
+- name: Create symlinks for Homebrew applications
+  file:
+    src: "{{ item.link.src }}"
+    dest: "{{ item.link.dest }}"
+    owner: root
+    group: wheel
+    state: link
+  become: True
+  become_user: root
+  with_items: "{{ combine(applications, cask_applications) | select('link') }}"
